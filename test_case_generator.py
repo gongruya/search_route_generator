@@ -43,16 +43,16 @@ def ucs_generator(node_num=10, min_solution_path=3, max_solution_step=5, percent
 
     for solution in solution_array:
         solution_paths = [(solution[x], solution[x+1]) for x in range(len(solution) - 1)]
-        available_time = (start_time % node_num)
+        available_time = (start_time % 24)
         for path in solution_paths:
             for i in range(cost_map[path[0], path[1]]):
-                print(node_num)
-                print(available_time)
-                print(path[0])
-                print(path[1])
-                print("===-=-=")
+                #print(node_num)
+                #print(available_time)
+                #print(path[0])
+                #print(path[1])
+                #print("===-=-=")
                 time_map[available_time][path[0], path[1]] = 1
-                available_time = ((available_time + 1) % node_num)
+                available_time = ((available_time + 1) % 24)
 
     return [source, dests, whole_map, start_time, cost_map, time_map]
 
@@ -114,7 +114,7 @@ def output_map(map_set, vocabulary, output_file):
 
 
 if __name__ == "__main__":
-    test_case_number = 1000
+    test_case_number = 10000
     char_array = numpy.array([])
     case_types = ["DFS", "BFS", "UCS"]
     for c in string.uppercase:
