@@ -39,13 +39,13 @@ def ucs_generator(node_num=10, min_solution_path=3, max_solution_step=5, percent
             start_time=start_time, return_type=1)
 
     cost_map = (numpy.random.randint(max_path_cost, size=(node_num, node_num)) + 1) * whole_map
-    time_map = [numpy.random.randint(2, size=(node_num, node_num)) for x in range(node_num)]
+    time_map = [numpy.random.randint(2, size=(node_num, node_num)) for x in range(24)]
 
     for solution in solution_array:
         solution_paths = [(solution[x], solution[x+1]) for x in range(len(solution) - 1)]
         available_time = (start_time % 24)
         for path in solution_paths:
-            for i in range(cost_map[path[0], path[1]]):
+            for i in range(cost_map[path[0], path[1]] + 1):
                 #print(node_num)
                 #print(available_time)
                 #print(path[0])
